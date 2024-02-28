@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <test name="AllTests">
+        <groups>
+            <run>
+                <include name = "regression"/>
+                <include name = "smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="lesson3.group.GroupClass"/>
+        </classes>
+    </test>
+</suite>
