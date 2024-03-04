@@ -41,6 +41,7 @@ public class WebDriverMethods1 {
 
         //getCookies()
         Set<Cookie> cookies = driver.manage().getCookies();
+        //driver.manage().addCookie("");
         for (Cookie cookie : cookies) {
             System.out.println(cookie);
         }
