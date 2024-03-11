@@ -1,5 +1,6 @@
 package lesson5.tests;
 
+import io.qameta.allure.*;
 import lesson2.DriverSetUpV3;
 import lesson5_pages.MixPage;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +28,10 @@ public class MixPageTest {
     }
 
     @Test
+    @Description("Ths test is my passion for DragNDrop")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Main function")
+    @Story("This is my history!!!")
     public void tryDragNDrop(){
         mixPage
                 .refreshMainPage()
@@ -37,6 +42,9 @@ public class MixPageTest {
     }
 
     @Test
+    @Description("Ths test will check how clicker page is works")
+    @Severity(SeverityLevel.CRITICAL)
+    @Feature("Authorisation")
     public void checkClickerButtonFunction(){
         int countOfClicks = 5;
         mixPage
@@ -45,11 +53,23 @@ public class MixPageTest {
         Assert.assertEquals(mixPage.returnNumberOfClicks(), countOfClicks, "Clicker button not work!!!");
     }
     @Test
+    @Description("Ths test will generate those poor animal")
+    @Severity(SeverityLevel.BLOCKER)
+    @Feature("Best feature")
+    @Story("This is my history!!!")
+    @TmsLink("https://resterruster32wis.testrail.io/index.php?/cases/view/1")
     public void generateRandomAnimalByName(){
         String randomAnimal = "Кенгуру";
         Assert.assertEquals(mixPage
                         .refreshMainPage()
                         .returnSymbolOfAnimalByInsertingNameAndClickingRandom(randomAnimal),
                 "\uD83E\uDD98");
+    }
+
+    @Test
+    @Description("Ths test will fail")
+    public void failedCase(){
+        mixPage.refreshMainPage();
+        Assert.assertTrue(false);
     }
 }

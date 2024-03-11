@@ -2,7 +2,7 @@
 <suite name="AllTests Suite">
     <test name="AllTests">
         <classes>
-            <class name="lesson3.AssertionsExample"/>
+            <class name="lesson5.tests.MixPageTest"/>
         </classes>
     </test>
 </suite>

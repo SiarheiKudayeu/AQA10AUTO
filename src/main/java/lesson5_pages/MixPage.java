@@ -1,15 +1,19 @@
 package lesson5_pages;
 
-import com.beust.ah.A;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MixPage {
     private WebDriver driver;
+
+    static final Logger logger = LoggerFactory.getLogger(MixPage.class);
 
     public MixPage(WebDriver driver) {
         this.driver = driver;
@@ -51,15 +55,20 @@ public class MixPage {
     @FindBy(id = "randomAnimal")
     private static WebElement randomAnimal;
 
+    @Step("Open main page!!!")
     public MixPage openMainPage() {
         driver.get("file:///C:/Users/anduser/Desktop/additional/Enabled/MixId.html");
+        logger.debug("open main page!!!");
         return this;
     }
+
+    @Step("Refresh main page!!!")
     public MixPage refreshMainPage() {
         driver.navigate().refresh();
         return this;
     }
 
+    @Step("trying to dragNDrop main page!!!")
     public MixPage dragNDrop(Symbols symbols) {
         Actions actions = new Actions(driver);
         WebElement sourceElement = null;
@@ -73,7 +82,7 @@ public class MixPage {
         actions.dragAndDrop(sourceElement, dragArea2).perform();
         return this;
     }
-
+    @Step("Waiting")
     public MixPage pause(int countOdSeconds) {
         try {
             Thread.sleep(1000L * countOdSeconds);
@@ -82,19 +91,19 @@ public class MixPage {
         }
         return this;
     }
-
-    public void clickOnCounterButton(int countOfClicks){
-        for (int i= 0; i < countOfClicks; i++ ){
+    @Step("Click on counter button!!")
+    public void clickOnCounterButton(int countOfClicks) {
+        for (int i = 0; i < countOfClicks; i++) {
             clickCounterButton.click();
         }
     }
-
-    public int returnNumberOfClicks(){
+    @Step("Take text from clicker field")
+    public int returnNumberOfClicks() {
         return Integer.parseInt(clickCounter.getText());
     }
-
-    public String returnSymbolOfAnimalByInsertingNameAndClickingRandom(String nameOfAnimal){
-        while (!(randomAnimal.getText().contains(nameOfAnimal))){
+    @Step("return symbol of animal")
+    public String returnSymbolOfAnimalByInsertingNameAndClickingRandom(String nameOfAnimal) {
+        while (!(randomAnimal.getText().contains(nameOfAnimal))) {
             generateAnimalButton.click();
         }
         return randomAnimal.getText().split("\\s")[1];
